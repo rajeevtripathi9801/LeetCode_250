@@ -1,8 +1,12 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
+        num_map = {}
+        for counter in range(len(nums)):
+            current_element = nums[counter]
+            needed_element = target - current_element
 
-        for i in range(len(nums)):
-            for j in range(i + 1, len(nums)):
-                if nums[i] + nums[j] == target:
-                    return [i, j]
-        
+            if needed_element in num_map:
+                return [counter, num_map[needed_element]]
+                
+            num_map[current_element] = counter
+
