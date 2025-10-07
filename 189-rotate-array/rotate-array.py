@@ -1,11 +1,17 @@
 class Solution:
     def rotate(self, nums: List[int], k: int) -> None:
-        size_of_array = len(nums)
-        k %= size_of_array      # To handle cases k>n 
-        temp = [0] * size_of_array
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        size = len(nums)
+        k = k% size
+
+        def reverse_helper(start, end):
+            while start < end:
+                nums[start], nums[end] = nums[end], nums[start]
+                start += 1 
+                end -= 1
         
-        for counter in range(size_of_array):
-            temp[(counter + k) % size_of_array] = nums[counter]
-        
-        for counter in range(size_of_array):
-            nums[counter] = temp[counter]  
+        reverse_helper(0, size - 1)
+        reverse_helper(0, k - 1)
+        reverse_helper(k, size - 1)
