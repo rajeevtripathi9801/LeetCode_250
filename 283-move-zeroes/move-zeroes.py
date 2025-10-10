@@ -3,9 +3,15 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        left_pointer = 0
+        new_list = []
         for counter in range(0, len(nums)):
             if nums[counter]!= 0:
-                nums[counter], nums[left_pointer] = nums[left_pointer], nums[counter]
-                left_pointer += 1
+                new_list.append(nums[counter])
+        while len(new_list) < len(nums):
+            new_list.append(0)
+            
+        for i in range(len(nums)):
+            nums[i] = new_list[i]
         
+        # Time Complexity - O(N)
+        # Space Complexity - O(1) 
